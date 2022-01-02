@@ -1,0 +1,14 @@
+[
+	{
+		"firstName": "Alok",
+		"lastName": "Aparanji",
+		"id": "1234567890123456",
+		"idType": "Aadhaar"
+	},
+	{
+		"firstName": "Qwer",
+		"lastName": "Asdf",
+		"id": "1122334455667788",
+		"idType": "Aadhaar"
+	}
+]

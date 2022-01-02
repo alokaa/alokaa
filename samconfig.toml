@@ -1,0 +1,22 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "first-s3-lambda"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1hj0dcgtk61io"
+s3_prefix = "first-s3-lambda"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
+
+[prod]
+[prod.deploy]
+[prod.deploy.parameters]
+stack_name = "first-s3-lambda"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-67ctdgxxxwve"
+s3_prefix = "first-s3-lambda"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []

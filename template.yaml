@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  first-s3-lambda
+
+  Sample SAM Template for first-s3-lambda
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 20
+
+Resources:
+  FirstS3Function:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: first_s3_lambda
+      Handler: com.alokaparanji.aws.s3.handler.S3EventHandler::handleRequest
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Policies:
+        - AmazonS3FullAccess
+        - AWSLambdaBasicExecutionRole
+      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+        Variables:
+          PARAM1: VALUE
+      Events:
+        s3Notification:
+          Type: S3
+          Properties:
+            Bucket: !Ref FirstS3Bucket
+            Events: s3:ObjectCreated:*        
+  FirstS3Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    BucketName: !Sub ${AWS::StackName}-${AWS::AccountId}
